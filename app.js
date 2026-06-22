@@ -142,7 +142,9 @@ const categories = ["all", "featured", "vessel", "thermal", "components", "mater
 document.addEventListener("DOMContentLoaded", () => {
   bindLanguageSwitch();
   bindFormButton();
-  loadProducts();
+  if (document.getElementById("productGrid")) {
+    loadProducts();
+  }
   renderStaticCopy();
 });
 
@@ -167,8 +169,10 @@ function bindLanguageSwitch() {
         item.classList.toggle("is-active", item === button);
       });
       renderStaticCopy();
-      renderFilters();
-      renderProducts();
+      if (document.getElementById("productGrid")) {
+        renderFilters();
+        renderProducts();
+      }
     });
   });
 }
