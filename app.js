@@ -1,5 +1,3 @@
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfFsF2POnvK5N3aRLyvllEBhXX9CL3hMQqV1pZ09w53fsmZKw/viewform?usp=publish-editor";
-
 const state = {
   lang: "zh",
   filter: "all",
@@ -21,6 +19,7 @@ const copy = {
     heroMeet: "預約洽談",
     factDate: "展期",
     factPlace: "地點",
+    factPlaceValue: "南港展覽館1館4樓 / TaiNEX 1, 4F",
     factBooth: "攤位",
     companyEyebrow: "Company",
     companyTitle: "半導體濕製程材料與設備應用夥伴",
@@ -31,6 +30,12 @@ const copy = {
     productsEyebrow: "Exhibits",
     productsTitle: "互動展品探索",
     productsIntro: "依現場展示主題快速篩選，點開卡片可查看應用、亮點與規格摘要。",
+    coreProductsEyebrow: "Core Products",
+    coreProductsTitle: "公司主力產品",
+    coreProductsIntro: "以下產品未於本次現場展出，仍為上品綜合工業重要產品線，可供貴賓、法人與媒體快速參考。",
+    coreMaterialTitle: "氟素樹脂材料 / Fluoropolymer Material",
+    coreLiningTitle: "氟素樹脂內襯 / Fluoropolymer Lining",
+    notOnDisplay: "非本次現場展出",
     boothDesignEyebrow: "Booth Design",
     boothDesignTitle: "上品攤位形象設計",
     boothDesignCaption: "SEMICON Taiwan 2026｜上品綜合工業｜Booth L1116",
@@ -45,10 +50,17 @@ const copy = {
     resourceProductsCopy: "PFA 槽體、Vessel、熱交換器、Fitting、內襯板與研發材料模組一覽。",
     resourceBoothTitle: "攤位資訊",
     resourceBoothCopy: "SEMICON Taiwan 2026 展期、地點、攤位 L1116 與現場洽談安排。",
+    sessionsEyebrow: "Program",
+    sessionsTitle: "現場導覽及交流場次",
+    sessionsIntro: "展會期間規劃法人活動與現場參訪交流，歡迎依場次資訊安排拜訪。",
+    sessionDateLabel: "時間",
+    sessionPlaceLabel: "地點",
+    sessionTypeLabel: "活動",
     contactEyebrow: "Book a Meeting",
     contactTitle: "預約現場洽談或索取資料",
     contactCopy: "請留下基本資訊與關注產品，展會期間將由上品團隊安排專人接待或後續聯繫。",
-    contactForm: "開啟 Google 表單",
+    contactEmailLabel: "聯絡信箱",
+    contactLinkedIn: "LinkedIn 社群",
     contactWebsite: "前往公司網站",
     backTop: "回到頁首",
     all: "全部",
@@ -58,11 +70,6 @@ const copy = {
     components: "零組件",
     materials: "板材內襯",
     rd: "研發材料",
-    application: "應用",
-    specs: "規格摘要",
-    learnMore: "查看細節",
-    closeDetails: "收合細節",
-    formPending: "Google 表單網址尚未填入。請將 app.js 裡的 GOOGLE_FORM_URL 換成正式表單連結。",
     boothHighlights: [
       ["兩層樓展場", "二樓規劃 VIP 會議空間，可支援約 10 人簡報與洽談。"],
       ["現場接待", "一樓設接待台、高腳圓桌與半開放交流區，方便快速導覽與名片交換。"],
@@ -85,6 +92,7 @@ const copy = {
     heroMeet: "Book a Meeting",
     factDate: "Date",
     factPlace: "Venue",
+    factPlaceValue: "TaiNEX 1, 4F / Nangang Exhibition Center Hall 1, 4F",
     factBooth: "Booth",
     companyEyebrow: "Company",
     companyTitle: "A materials and equipment partner for semiconductor wet processes",
@@ -95,6 +103,12 @@ const copy = {
     productsEyebrow: "Exhibits",
     productsTitle: "Interactive Product Explorer",
     productsIntro: "Filter by exhibit theme and open each card to review applications, highlights, and specification summaries.",
+    coreProductsEyebrow: "Core Products",
+    coreProductsTitle: "Core Products",
+    coreProductsIntro: "The following products are not displayed on site this year, but remain key product lines of Allied Supreme Corp.",
+    coreMaterialTitle: "Fluoropolymer Material",
+    coreLiningTitle: "Fluoropolymer Lining",
+    notOnDisplay: "Not displayed on site",
     boothDesignEyebrow: "Booth Design",
     boothDesignTitle: "ASC Booth Identity Design",
     boothDesignCaption: "SEMICON Taiwan 2026 | Allied Supreme Corp. | Booth L1116",
@@ -109,10 +123,17 @@ const copy = {
     resourceProductsCopy: "Overview of PFA tanks, vessels, heat exchangers, fittings, lining panels, and R&D material modules.",
     resourceBoothTitle: "Booth Info",
     resourceBoothCopy: "SEMICON Taiwan 2026 dates, venue, booth L1116, and on-site meeting arrangements.",
+    sessionsEyebrow: "Program",
+    sessionsTitle: "On-site Tours and Meetings",
+    sessionsIntro: "Investor programs and booth visit sessions are planned during the show for scheduled discussions and product tours.",
+    sessionDateLabel: "Time",
+    sessionPlaceLabel: "Venue",
+    sessionTypeLabel: "Program",
     contactEyebrow: "Book a Meeting",
     contactTitle: "Schedule an on-site discussion or request materials",
     contactCopy: "Share your contact details and product interests so the ASC team can arrange a host during the show or follow up afterward.",
-    contactForm: "Open Google Form",
+    contactEmailLabel: "Contact Email",
+    contactLinkedIn: "LinkedIn",
     contactWebsite: "Company Website",
     backTop: "Back to Top",
     all: "All",
@@ -122,11 +143,6 @@ const copy = {
     components: "Components",
     materials: "Lining Sheets",
     rd: "R&D Materials",
-    application: "Application",
-    specs: "Spec Summary",
-    learnMore: "View Details",
-    closeDetails: "Close Details",
-    formPending: "The Google Form URL has not been configured yet. Replace GOOGLE_FORM_URL in app.js with the live form link.",
     boothHighlights: [
       ["Two-level booth", "The second floor is planned as a VIP meeting space for briefings and discussions with around 10 guests."],
       ["On-site reception", "The first floor includes a reception counter, high tables, and an open discussion area for fast booth tours."],
@@ -141,10 +157,10 @@ const categories = ["all", "featured", "vessel", "thermal", "components", "mater
 
 document.addEventListener("DOMContentLoaded", () => {
   bindLanguageSwitch();
-  bindFormButton();
   if (document.getElementById("productGrid")) {
     loadProducts();
   }
+  renderCoreProducts();
   renderStaticCopy();
 });
 
@@ -173,17 +189,8 @@ function bindLanguageSwitch() {
         renderFilters();
         renderProducts();
       }
+      renderCoreProducts();
     });
-  });
-}
-
-function bindFormButton() {
-  document.getElementById("formButton").addEventListener("click", () => {
-    if (GOOGLE_FORM_URL.includes("REPLACE_WITH")) {
-      alert(copy[state.lang].formPending);
-      return;
-    }
-    window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
   });
 }
 
@@ -205,6 +212,36 @@ function renderStaticCopy() {
       </article>
     `).join("");
   }
+
+  renderSessions();
+}
+
+function renderSessions() {
+  const sessionList = document.getElementById("sessionList");
+  if (!sessionList) return;
+
+  sessionList.innerHTML = onsiteSessions.map((session, index) => `
+    <article class="session-card">
+      <span>${String(index + 1).padStart(2, "0")}</span>
+      <div>
+        <h3>${session.title[state.lang]}</h3>
+        <dl>
+          <div>
+            <dt>${copy[state.lang].sessionDateLabel}</dt>
+            <dd>${session.time[state.lang]}</dd>
+          </div>
+          <div>
+            <dt>${copy[state.lang].sessionPlaceLabel}</dt>
+            <dd>${session.place[state.lang]}</dd>
+          </div>
+          <div>
+            <dt>${copy[state.lang].sessionTypeLabel}</dt>
+            <dd>${session.type[state.lang]}</dd>
+          </div>
+        </dl>
+      </div>
+    </article>
+  `).join("");
 }
 
 function renderFilters() {
@@ -235,7 +272,6 @@ function renderProducts() {
   productGrid.innerHTML = products.map((product) => {
     const title = product.name[state.lang];
     const summary = product.summary[state.lang];
-    const highlights = product.highlights[state.lang].map((item) => `<li>${item}</li>`).join("");
     const imageList = Array.isArray(product.images) && product.images.length ? product.images : [product.image];
     const isCarousel = imageList.length > 1;
     const mediaClass = isCarousel ? "product-media media-carousel" : "product-media";
@@ -257,32 +293,69 @@ function renderProducts() {
           <p class="category-label">${copy[state.lang][product.category]}</p>
           <h3>${title}</h3>
           <p>${summary}</p>
-          <button class="detail-toggle" type="button" aria-expanded="false">
-            ${copy[state.lang].learnMore}
-          </button>
-          <div class="product-details" hidden>
-            <h4>${copy[state.lang].application}</h4>
-            <p>${product.application[state.lang]}</p>
-            <h4>${copy[state.lang].specs}</h4>
-            <p>${product.specs[state.lang]}</p>
-            <ul>${highlights}</ul>
-          </div>
         </div>
       </article>
     `;
   }).join("");
 
-  productGrid.querySelectorAll(".detail-toggle").forEach((button) => {
-    button.addEventListener("click", () => {
-      const details = button.nextElementSibling;
-      const isOpen = !details.hidden;
-      details.hidden = isOpen;
-      button.setAttribute("aria-expanded", String(!isOpen));
-      button.textContent = isOpen ? copy[state.lang].learnMore : copy[state.lang].closeDetails;
-    });
-  });
-
   productGrid.querySelectorAll(".media-carousel").forEach(bindMediaCarousel);
+}
+
+function renderCoreProducts() {
+  const coreProductsList = document.getElementById("coreProductsList");
+  if (!coreProductsList) return;
+
+  coreProductsList.innerHTML = coreProductGroups.map((group) => `
+    <section class="core-category" aria-label="${group.title[state.lang]}">
+      <div class="core-category-heading">
+        <h3>${group.title[state.lang]}</h3>
+        <span>${group.items.length}</span>
+      </div>
+      <div class="product-grid">
+        ${group.items.map((product) => renderCoreProductCard(product, group.title[state.lang])).join("")}
+      </div>
+    </section>
+  `).join("");
+
+  coreProductsList.querySelectorAll(".media-carousel").forEach(bindMediaCarousel);
+}
+
+function renderCoreProductCard(product, categoryTitle) {
+  const title = product.name[state.lang];
+  const summary = product.summary[state.lang];
+  const imageList = Array.isArray(product.images) ? product.images.filter(Boolean) : [];
+  const hasImages = imageList.length > 0;
+  const isCarousel = imageList.length > 1;
+  const mediaClass = [
+    "product-media",
+    isCarousel ? "media-carousel" : "",
+    hasImages ? "" : "is-placeholder"
+  ].filter(Boolean).join(" ");
+  const mediaContent = hasImages
+    ? isCarousel
+      ? `
+        <button class="media-nav prev" type="button" aria-label="Previous image">‹</button>
+        <div class="media-track">${imageList.map((src, index) => `<img src="${src}" alt="${title} ${index + 1}">`).join("")}</div>
+        <button class="media-nav next" type="button" aria-label="Next image">›</button>
+        <div class="media-dots" aria-hidden="true">
+          ${imageList.map((_, index) => `<span class="${index === 0 ? "is-active" : ""}"></span>`).join("")}
+        </div>
+      `
+      : `<img src="${imageList[0]}" alt="${title}">`
+    : `<div class="product-placeholder"><strong>ASC</strong><span>${copy[state.lang].notOnDisplay}</span></div>`;
+
+  return `
+    <article class="product-card core-product-card">
+      <div class="${mediaClass}">
+        ${mediaContent}
+      </div>
+      <div class="product-body">
+        <p class="category-label">${categoryTitle}</p>
+        <h3>${title}</h3>
+        <p>${summary}</p>
+      </div>
+    </article>
+  `;
 }
 
 function bindMediaCarousel(carousel) {
@@ -300,6 +373,196 @@ function bindMediaCarousel(carousel) {
   carousel.querySelector(".prev").addEventListener("click", () => update(index - 1));
   carousel.querySelector(".next").addEventListener("click", () => update(index + 1));
 }
+
+const onsiteSessions = [
+  {
+    title: {
+      zh: "富邦 TWSE & Fubon SEMICON Taiwan Corporate Day",
+      en: "TWSE & Fubon SEMICON Taiwan Corporate Day"
+    },
+    time: {
+      zh: "2026/09/03 (四) 11:20-11:50",
+      en: "2026/09/03 (Thu.) 11:20-11:50"
+    },
+    place: {
+      zh: "南港展覽館一館5樓506會議室",
+      en: "TaiNEX 1, 5F, Room 506"
+    },
+    type: {
+      zh: "法人交流場次",
+      en: "Investor meeting session"
+    }
+  },
+  {
+    title: {
+      zh: "台新證券半導體展參訪",
+      en: "Taishin Securities SEMICON Taiwan Booth Visit"
+    },
+    time: {
+      zh: "2026/09/03 (四) 14:00-14:30",
+      en: "2026/09/03 (Thu.) 14:00-14:30"
+    },
+    place: {
+      zh: "SEMICON Taiwan 2026 現場，上品綜合工業 Booth L1116",
+      en: "SEMICON Taiwan 2026, Allied Supreme Corp. Booth L1116"
+    },
+    type: {
+      zh: "台新證券 20-30 位，產品導覽及現場交流",
+      en: "Product tour and on-site discussion for 20-30 Taishin Securities visitors"
+    }
+  }
+];
+
+const coreProductGroups = [
+  {
+    id: "fluoropolymer-material",
+    title: {
+      zh: "氟素樹脂材料 / Fluoropolymer Material",
+      en: "Fluoropolymer Material"
+    },
+    items: [
+      {
+        id: "core-lining-sheet",
+        images: ["assets/products/core-fluoropolymer-lining-sheet.webp"],
+        name: {
+          zh: "內襯板材與素板",
+          en: "Lining sheet"
+        },
+        summary: {
+          zh: "上品公司提供的新式氟素樹脂(Teflon)內襯板材具有最高級的純度保證及良好的抗臭氧性，且有更優良的耐滲透性、表面平滑性，以及更優越的機械強度與防應力龜裂性能，能為客戶提供有效的解決方案。",
+          en: "Allied Supreme Corp. provide the most advanced of fluoropolymer (Teflon) sheet lining material. The superlative purity is guaranteed, and with the best permeation resistance, excellent Ozone resistance, smoother surface, and increased mechanical reliability also more superior of the stress crack resistance. Allied Supreme Corp. can provide customer with effective solutions."
+        }
+      },
+      {
+        id: "core-pipe-liner",
+        images: ["assets/products/core-fluoropolymer-pipe-liner.webp"],
+        name: {
+          zh: "內襯直管用管材",
+          en: "Pipe Liner"
+        },
+        summary: {
+          zh: "上品公司可提供較長尺寸的Teflon內襯管材，以降低管線組裝時的管接頭成本。較少的法蘭接頭在相同長度管線既能減少洩漏機會，又能減少管線重量、減少支架成本，對於內襯管線製作時更能減少材料翻邊加工與管料損失。",
+          en: "Allied Supreme Corp. provide longer pipe liner to reduce the cost of fitting joints when piping is assembled. At the same length with fewer connected flanges, it will be less possibility of leakage and also reduce the weight of the pipeline to save the cost of the support, as well as can reduce the material processing loss when fabricating lining pipe."
+        }
+      },
+      {
+        id: "core-pfa-thick-sheet-rod",
+        images: [
+          "assets/products/core-fluoropolymer-pfa-thick-sheet.webp",
+          "assets/products/core-fluoropolymer-pfa-rod.webp"
+        ],
+        name: {
+          zh: "PFA厚板與圓棒",
+          en: "PFA Thick Sheet and Rod"
+        },
+        summary: {
+          zh: "PFA的厚板與圓棒具有高純度與較平滑的表面，優良的耐化學性與耐臭氧性，容易焊接，亦可進一步機械加工成為所需要的PFA加工品。耐熱溫度在-240℃~260℃。",
+          en: "PFA thick sheet and rod are with high purity and smoother surface. They have excellent chemical resistance and excellent ozone resistance. It could be easy to weld, also can be further processed into the required PFA products. Wide temperature range: -400˚F~500˚F (-240℃~260℃)."
+        }
+      }
+    ]
+  },
+  {
+    id: "fluoropolymer-lining",
+    title: {
+      zh: "氟素樹脂內襯 / Fluoropolymer Lining",
+      en: "Fluoropolymer Lining"
+    },
+    items: [
+      {
+        id: "core-lined-pipe-ptfe",
+        images: ["assets/products/core-fluoropolymer-lining-lined-pipe-ptfe-m-ptfe.webp"],
+        name: {
+          zh: "內襯直管與管件 (PTFE/M-PTFE)",
+          en: "Lined Pipe & Fittings (PTFE/M-PTFE)"
+        },
+        summary: {
+          zh: "因半導體工業逐漸蓬勃發展，半導體製程對於氟素樹脂要求的質量與日俱增，上品公司亦開發PTFE、M-PTFE、PFA管、管件，並增設多套無塵室，讓我們的半導體製品都能符合半導體製程的潔淨要求。本產品符合ANSI 150 LBS及JIS 10K規範。",
+          en: "Owing to the prosperous development of semiconductor, the requirement of quality fluoropolymer resin product keeps increasing."
+        }
+      },
+      {
+        id: "core-iso-container",
+        images: ["assets/products/core-fluoropolymer-lining-iso-container.webp"],
+        name: {
+          zh: "槽車",
+          en: "ISO CONTAINER"
+        },
+        summary: {
+          zh: "上品公司的氟素樹脂內襯槽車貼合完成後，需經多項測試、檢驗完成才允許出貨。",
+          en: "Allied Supreme Corp. fluoropolymer lining container is only allowed to be shipped after the completion of a series of tests, and inspections."
+        }
+      },
+      {
+        id: "core-seamless-column",
+        images: ["assets/products/core-fluoropolymer-lining-seamless-column.webp"],
+        name: {
+          zh: "塔節",
+          en: "Seamless Column"
+        },
+        summary: {
+          zh: "採用加厚的PTFE、M-PTFE管，並以特殊的成型工法，使管嘴和本體一體成型，無須焊道。",
+          en: "Seamless column utilizes PTFE or M-PTFE heavy wall liner with exceptional technique, to make the nozzle & column in one body with free of welding line....."
+        }
+      },
+      {
+        id: "core-immersion-coil-heat-exchanger",
+        images: [
+          "assets/products/core-fluoropolymer-lining-heat-exchanger-coil-type.webp",
+          "assets/products/core-fluoropolymer-lining-heat-exchanger-free-type.webp",
+          "assets/products/core-fluoropolymer-lining-heat-exchanger-modular-type.webp"
+        ],
+        name: {
+          zh: "熱交換器",
+          en: "Immersion Coil & Shell & Tube Type Heat Exchanger"
+        },
+        summary: {
+          zh: "有別於傳統的焊接式熱交換器，上品公司提供的特殊接頭設計(一體成型無焊道)搭配耐化性極佳的PFA Tube，於耐壓耐蝕的應用，有極為卓越的表現。",
+          en: "The new type is different from the traditional welded heat exchanger. Allied Supreme Corp. provides a special joint design (one piece without welded line) with excellent chemical resistance of PFA Tube, the application of pressure and corrosion resistance has a very excellent performance."
+        }
+      },
+      {
+        id: "core-chemical-filter-housing",
+        images: ["assets/products/core-fluoropolymer-lining-filter-housing.webp"],
+        name: {
+          zh: "內襯過濾裝置",
+          en: "EL-Grade Chemical Filter Housing"
+        },
+        summary: {
+          zh: "內襯過濾裝置主要應用於過濾強酸、強鹼，內襯氟素樹脂可避免酸鹼液體直接接觸不銹鋼，提高使用壽命。",
+          en: "EL-Grade Chemical Filter Housing is mainly used in filtering strong acid, alkali, lined with fluoropolymer to avoid acid-base liquid direct contact with stainless steel, improve service life."
+        }
+      },
+      {
+        id: "core-lined-pipe-pfa",
+        images: [
+          "assets/products/Fluoropolymer%20Lining/products-fluoropolymer%20lining-Lined%20Pipe%20%26%20Fittings%20(PFA)%20-02.png",
+          "assets/products/Fluoropolymer%20Lining/products-fluoropolymer%20lining-Lined%20Pipe%20%26%20Fittings%20(PFA).png"
+        ],
+        name: {
+          zh: "內襯直管與管件 (PFA)",
+          en: "Lined Pipe & Fittings (PFA)"
+        },
+        summary: {
+          zh: "因半導體工業逐漸蓬勃發展，半導體製程對於氟素樹脂要求的質量與日俱增，上品公司亦開發PTFE、M-PTFE、PFA管、管件，並增設多套無塵室，讓我們的半導體製品都能符合半導體製程的潔淨要求。本產品符合ANSI 150 LBS及JIS 10K規範。",
+          en: "Owing to the prosperous development of semiconductor, the requirement of quality fluoropolymer resin product keeps increasing."
+        }
+      },
+      {
+        id: "core-flexible-hose",
+        images: ["assets/products/Fluoropolymer%20Lining/products-fluoropolymer%20lining-flexible%20hose.png"],
+        name: {
+          zh: "蛇管",
+          en: "Flexible Hose"
+        },
+        summary: {
+          zh: "上品公司為了進一步提供更高級產品服務，特別開發製作TEFPASS® 軟管以提供半導體工業高純度要求，特別是可耐高溫與耐全真空的SHPT type軟管，優異的性能深獲客戶支持與使用。",
+          en: "Allied Supreme Corp. further offers the superior performance of “TEFPASS Teflon flexible hose”. The main purpose is to meet high purity for semiconductor industry in chemical delivering. Specially, the “SHPT type hose can be used in high temperature, full vacuum resistance. It has been largely applied and fully supported by our customers."
+        }
+      }
+    ]
+  }
+];
 
 const fallbackProducts = [
   {
