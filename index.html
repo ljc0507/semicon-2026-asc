@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <title>上品綜合工業 | SEMICON Taiwan 2026</title>
     <meta name="description" content="上品綜合工業 SEMICON Taiwan 2026 攤位 L1116 互動展品導覽。">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260630-07">
   </head>
   <body>
     <header class="site-header">
@@ -22,6 +22,7 @@
         </span>
       </a>
       <nav class="site-nav" aria-label="Main navigation">
+        <a href="#products" data-i18n="navProducts">展品</a>
         <a href="#booth-design" data-i18n="navBoothDesign">攤位設計</a>
         <a href="#media" data-i18n="navMedia">資料</a>
         <a href="#contact" data-i18n="navContact">預約</a>
@@ -45,7 +46,8 @@
           <h1 id="hero-title" data-i18n="heroTitle">上品綜合工業 SEMICON Taiwan 2026 展品導覽</h1>
           <p class="hero-copy" data-i18n="heroCopy">以高潔淨氟素材料、槽體、熱交換與模組化製程應用，支援半導體濕製程關鍵設備需求。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#contact" data-i18n="heroMeet">預約洽談</a>
+            <a class="button primary" href="#products" data-i18n="heroExplore">探索展品</a>
+            <a class="button secondary" href="#contact" data-i18n="heroMeet">預約洽談</a>
           </div>
           <dl class="event-facts">
             <div>
@@ -54,7 +56,7 @@
             </div>
             <div>
               <dt data-i18n="factPlace">地點</dt>
-              <dd>TaiNEX 1, 1F</dd>
+              <dd data-i18n="factPlaceValue">南港展覽館1館4樓 / TaiNEX 1, 4F</dd>
             </div>
             <div>
               <dt data-i18n="factBooth">攤位</dt>
@@ -86,6 +88,29 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="section products-section" id="products" aria-labelledby="products-title">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow" data-i18n="productsEyebrow">Exhibits</p>
+            <h2 id="products-title" data-i18n="productsTitle">互動展品探索</h2>
+          </div>
+          <p data-i18n="productsIntro">依現場展示主題快速篩選，點開卡片可查看應用、亮點與規格摘要。</p>
+        </div>
+        <div class="filter-bar" id="filterBar" aria-label="Product filters"></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="section core-products-section" id="core-products" aria-labelledby="core-products-title">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow" data-i18n="coreProductsEyebrow">Core Products</p>
+            <h2 id="core-products-title" data-i18n="coreProductsTitle">公司主力產品</h2>
+          </div>
+          <p data-i18n="coreProductsIntro">以下產品未於本次現場展出，仍為上品綜合工業重要產品線，可供貴賓、法人與媒體快速參考。</p>
+        </div>
+        <div class="core-products-list" id="coreProductsList" aria-live="polite"></div>
       </section>
 
       <section class="section booth-design-section" id="booth-design" aria-labelledby="booth-design-title">
@@ -128,6 +153,17 @@
         </div>
       </section>
 
+      <section class="section sessions-section" id="sessions" aria-labelledby="sessions-title">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow" data-i18n="sessionsEyebrow">Program</p>
+            <h2 id="sessions-title" data-i18n="sessionsTitle">現場導覽及交流場次</h2>
+          </div>
+          <p data-i18n="sessionsIntro">展會期間規劃法人活動與現場參訪交流，歡迎依場次資訊安排拜訪。</p>
+        </div>
+        <div class="session-list" id="sessionList" aria-live="polite"></div>
+      </section>
+
       <section class="section contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
           <div>
@@ -136,8 +172,14 @@
             <p data-i18n="contactCopy">請留下基本資訊與關注產品，展會期間將由上品團隊安排專人接待或後續聯繫。</p>
           </div>
           <div class="contact-actions">
-            <button class="button primary" type="button" id="formButton" data-i18n="contactForm">開啟 Google 表單</button>
-            <a class="button secondary" href="https://www.alliedsupreme.com/" target="_blank" rel="noreferrer" data-i18n="contactWebsite">前往公司網站</a>
+            <a class="button secondary contact-info" href="mailto:TEFPASS@alliedsupreme.com">
+              <span data-i18n="contactEmailLabel">聯絡信箱</span>
+              <strong>TEFPASS@alliedsupreme.com</strong>
+            </a>
+            <a class="button secondary linkedin-button" href="https://www.linkedin.com/company/asctefpass/?viewAsMember=true" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <span class="linkedin-icon" aria-hidden="true">in</span>
+            </a>
+            <a class="button primary" href="https://www.alliedsupreme.com/" target="_blank" rel="noreferrer" data-i18n="contactWebsite">前往公司網站</a>
           </div>
         </div>
       </section>
@@ -145,9 +187,10 @@
 
     <footer class="site-footer">
       <p><strong data-i18n="brandNameFooter">上品綜合工業</strong> | SEMICON Taiwan 2026 | Booth L1116</p>
+      <span class="version-badge">ASC-2026-Semi-V4</span>
       <a href="#top" data-i18n="backTop">回到頁首</a>
     </footer>
 
-    <script src="app.js?v=20260622-01"></script>
+    <script src="app.js?v=20260630-07"></script>
   </body>
 </html>
