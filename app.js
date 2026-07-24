@@ -1,7 +1,8 @@
 const state = {
   lang: "zh",
   filter: "all",
-  products: []
+  products: [],
+  galleryExpanded: false
 };
 
 const copy = {
@@ -56,6 +57,12 @@ const copy = {
     sessionDateLabel: "時間",
     sessionPlaceLabel: "地點",
     sessionTypeLabel: "活動",
+    highlightsEyebrow: "Highlights",
+    highlightsTitle: "活動花絮",
+    highlightsIntro: "現場導覽、交流活動與攤位互動照片，供貴賓與媒體快速瀏覽。",
+    highlightsMore: "更多",
+    highlightsLess: "收合",
+    highlightsPlaceholder: "照片待補",
     contactEyebrow: "Book a Meeting",
     contactTitle: "預約現場洽談或索取資料",
     contactCopy: "請留下基本資訊與關注產品，展會期間將由上品團隊安排專人接待或後續聯繫。",
@@ -129,6 +136,12 @@ const copy = {
     sessionDateLabel: "Time",
     sessionPlaceLabel: "Venue",
     sessionTypeLabel: "Program",
+    highlightsEyebrow: "Highlights",
+    highlightsTitle: "Event Highlights",
+    highlightsIntro: "Photos from guided tours, meetings, and booth interactions for quick viewing by guests and media.",
+    highlightsMore: "More",
+    highlightsLess: "Show Less",
+    highlightsPlaceholder: "Photo pending",
     contactEyebrow: "Book a Meeting",
     contactTitle: "Schedule an on-site discussion or request materials",
     contactCopy: "Share your contact details and product interests so the ASC team can arrange a host during the show or follow up afterward.",
@@ -162,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   renderCoreProducts();
   renderStaticCopy();
+  bindGalleryMoreButton();
 });
 
 async function loadProducts() {
@@ -190,6 +204,7 @@ function bindLanguageSwitch() {
         renderProducts();
       }
       renderCoreProducts();
+      renderEventGallery();
     });
   });
 }
@@ -214,6 +229,7 @@ function renderStaticCopy() {
   }
 
   renderSessions();
+  renderEventGallery();
 }
 
 function renderSessions() {
@@ -242,6 +258,44 @@ function renderSessions() {
       </div>
     </article>
   `).join("");
+}
+
+function bindGalleryMoreButton() {
+  const button = document.getElementById("galleryMoreButton");
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    state.galleryExpanded = !state.galleryExpanded;
+    renderEventGallery();
+  });
+}
+
+function renderEventGallery() {
+  const gallery = document.getElementById("highlightGallery");
+  const button = document.getElementById("galleryMoreButton");
+  if (!gallery) return;
+
+  const visibleItems = state.galleryExpanded ? eventHighlights : eventHighlights.slice(0, 3);
+  gallery.innerHTML = visibleItems.map((item, index) => {
+    const title = item.title[state.lang];
+    const media = item.image
+      ? `<img src="${item.image}" alt="${title}">`
+      : `<div class="highlight-placeholder"><strong>ASC</strong><span>${copy[state.lang].highlightsPlaceholder}</span></div>`;
+
+    return `
+      <article class="highlight-card">
+        <div class="highlight-media">
+          ${media}
+        </div>
+        <p>${String(index + 1).padStart(2, "0")} / ${title}</p>
+      </article>
+    `;
+  }).join("");
+
+  if (button) {
+    button.textContent = state.galleryExpanded ? copy[state.lang].highlightsLess : copy[state.lang].highlightsMore;
+    button.hidden = eventHighlights.length <= 3;
+  }
 }
 
 function renderFilters() {
@@ -309,7 +363,6 @@ function renderCoreProducts() {
     <section class="core-category" aria-label="${group.title[state.lang]}">
       <div class="core-category-heading">
         <h3>${group.title[state.lang]}</h3>
-        <span>${group.items.length}</span>
       </div>
       <div class="product-grid">
         ${group.items.map((product) => renderCoreProductCard(product, group.title[state.lang])).join("")}
@@ -412,6 +465,14 @@ const onsiteSessions = [
     }
   }
 ];
+
+const eventHighlights = Array.from({ length: 12 }, (_, index) => ({
+  image: "",
+  title: {
+    zh: `活動花絮 ${String(index + 1).padStart(2, "0")}`,
+    en: `Event Highlight ${String(index + 1).padStart(2, "0")}`
+  }
+}));
 
 const coreProductGroups = [
   {
