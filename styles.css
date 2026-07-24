@@ -322,6 +322,19 @@ h3 {
   font-weight: 900;
 }
 
+.event-facts .map-link {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.48);
+  text-underline-offset: 3px;
+}
+
+.event-facts .map-link:hover,
+.event-facts .map-link:focus-visible {
+  color: #ffffff;
+  text-decoration-color: var(--semicon-yellow);
+}
+
 .section {
   padding: 64px 20px;
 }
